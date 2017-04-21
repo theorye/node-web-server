@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
@@ -20,7 +21,7 @@ app.use((req, res, next) => {
   next();
 })
 
-// For mainteance.  
+// For mainteance.
 // app.use((req, res, next) => {
 //   res.render('maintenace.hbs');
 // })
@@ -56,6 +57,6 @@ app.get('/about', (req, res) => {
   })
 });
 
-app.listen(3001, () => {
-  console.log('server is up on port 3001')
+app.listen(PORT, () => {
+  console.log(`Server is up on ${PORT}`)
 });
